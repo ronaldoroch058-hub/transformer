@@ -2,7 +2,9 @@ from pathlib import Path
 
 def get_config():
     return {
-        "batch_size": 8,
+        "batch_size": 4,
+        "grad_accum_steps": 2,  # effective batch size = batch_size * grad_accum_steps = 8
+        "use_bf16": True,  # bf16 mixed precision on CUDA (fits a 4 GB GPU, ~1.6x faster)
         "num_epochs": 20,
         "lr": 10**-4,
         "seq_len": 350,
